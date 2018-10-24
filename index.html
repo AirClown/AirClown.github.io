@@ -288,6 +288,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/second-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AirClown">
+      <meta itemprop="description" content="having fun">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AirClown' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/second-blog/" itemprop="url">
+                  基于地磁场的室内定位介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-24 22:04:50 / 修改时间：22:09:40" itemprop="dateCreated datePublished" datetime="2018-10-24T22:04:50+08:00">2018-10-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>声明一下，该篇文章纯粹是科普性质的，不涉及任何代码和算法实现。</p>
+<p>我们来看看如何利用磁场来定位。</p>
+<p>##1、为什么能用磁场定位</p>
+<p>这个问题估计有很多人都想不明白，那么就听我来解释一下。首先地球就可以看成一块大磁铁，因此磁场在我们身边是无处不在的，我们利用地球的磁场可以快速确认南北极，进而确定我们所处的方向，手机中的方向传感器就是由此而来。那么磁场又跟定位有什么关系呢，我们身边的磁场其实很容易受到铁制品的干扰，而建筑物中又到处布满了钢筋和各种铁制管道，这样就会导致我们在测量出的磁场在室内不同的位置上会有着不同的场强和变化，由于钢材的分布可以j近似看成是随机的，而且在长时间内是不会轻易改变的，这样一来根据场强的变化趋势就可以形成一个独一无二的指纹。然后我们通过测量室内磁场的分布建立磁场分布图，通过测量磁场数据匹配磁场分布图，就可以精确定位到当前所在的位置了。</p>
+<p>##2、地磁场是否保持稳定？</p>
+<p>实际上，磁场是有变化的。随着季节的变化，地磁也会发生改变，但这种改变仅限于磁场强度的变化，磁场分布图上磁场的变化趋势是没有发生改变的,我们可以观测到磁场的平均幅度相差很大，但是整体波形还是非常相似的。这种幅度上的差异我们是可以通过一些数学手段来消除的。</p>
+<p>##3、还有什么会影响磁场？</p>
+<p>只要是铁制品，对磁场都是用影响的。例如电脑、电视等电子产品，另外，假如你家里新买了冰箱或者洗衣机等大型电器，那么当然会对磁场造成影响了。不过这些电器的影响都不大，往往影响距离只有半米不到，通过算法还是可以消除这些影响的。真正对我们定位产生影响的，是像电梯、汽车这种大型铁块，这些大体积，并且具有移动性的铁块对于磁场的影响还是相当大的，具体没有去测量过，不过可以肯定，它们的影响范围至少在一米以上。</p>
+<p>##4、我们怎么来做磁场定位？</p>
+<p>首先选定场地，采集室内的磁场分布，建立磁场分布图。我们在行进过程中，通过手机采集的磁场数据去实时匹配磁场分布图，最终确定所在位置。</p>
+<p>##5、磁场匹配算法有哪些？</p>
+<p>主流算法是采用粒子滤波器。也有用DTM、卡尔曼滤波来做的，仅供参考。</p>
+<p>##6、地磁定位有什么优势和劣势？</p>
+<p>优势在于不需要借助其他器械，单纯靠一台智能手机就能够进行数据采集和定位，算法简单易实现，有自我纠偏的功能，误差不会累计。</p>
+<p>缺点在于事先要采集数据建立磁场分布图。刚开始定位时，若是地图较大，需要花较长时间来匹配地图，匹配时间较长，有一定概率匹配失败（依赖于算法的效率和复杂度）。另外，磁场也会受到大型移动铁块（车辆）的干扰，因此不太适合用于停车场的导航。</p>
+<p>总结一下，虽然磁场定位有相当不错的性能，但是鉴于磁场的不稳定性（易受外物干扰），纯粹的磁场定位还是有一定的失败可能性。因此，建议将磁场定位作为一个辅助性的定位方法。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/我的第一篇博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -488,7 +643,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
