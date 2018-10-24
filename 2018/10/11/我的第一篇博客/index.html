@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="having fun">
+  <meta name="description" content="研究了一段时间手机的惯性导航，跟大家分享一下学习的心得。 先下个结论，高精度的室内定位是无法单靠惯性导航（简称：惯导）来实现的。为什么我会这么说呢，看完这篇文章你就明白了。 先说下为什么要研究室内导航技术，一个非常简单的原因：室内GPS信号差。假如室内能清晰的收到GPS信号，这个问题就不会令那么多所谓的科学家、研究人员感到头疼了。 进入正题，首先惯性导航主要依赖于两个传感器，和通过传感器计算出三个">
+<meta name="keywords" content="室内定位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
+<meta property="og:title" content="惯性导航在室内定位中的优势与劣势">
 <meta property="og:url" content="http://yoursite.com/2018/10/11/我的第一篇博客/index.html">
 <meta property="og:site_name" content="AirClown&#39; Blog">
-<meta property="og:description" content="having fun">
+<meta property="og:description" content="研究了一段时间手机的惯性导航，跟大家分享一下学习的心得。 先下个结论，高精度的室内定位是无法单靠惯性导航（简称：惯导）来实现的。为什么我会这么说呢，看完这篇文章你就明白了。 先说下为什么要研究室内导航技术，一个非常简单的原因：室内GPS信号差。假如室内能清晰的收到GPS信号，这个问题就不会令那么多所谓的科学家、研究人员感到头疼了。 进入正题，首先惯性导航主要依赖于两个传感器，和通过传感器计算出三个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-11T12:25:05.537Z">
+<meta property="og:updated_time" content="2018-10-24T06:49:40.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="having fun">
+<meta name="twitter:title" content="惯性导航在室内定位中的优势与劣势">
+<meta name="twitter:description" content="研究了一段时间手机的惯性导航，跟大家分享一下学习的心得。 先下个结论，高精度的室内定位是无法单靠惯性导航（简称：惯导）来实现的。为什么我会这么说呢，看完这篇文章你就明白了。 先说下为什么要研究室内导航技术，一个非常简单的原因：室内GPS信号差。假如室内能清晰的收到GPS信号，这个问题就不会令那么多所谓的科学家、研究人员感到头疼了。 进入正题，首先惯性导航主要依赖于两个传感器，和通过传感器计算出三个">
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>我的第一篇博客 | AirClown' Blog</title>
+  <title>惯性导航在室内定位中的优势与劣势 | AirClown' Blog</title>
   
 
 
@@ -305,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">我的第一篇博客
+          <h1 class="post-title" itemprop="name headline">惯性导航在室内定位中的优势与劣势
               
             
           </h1>
@@ -333,6 +334,22 @@
               <time title="创建时间：2018-10-11 20:25:05" itemprop="dateCreated datePublished" datetime="2018-10-11T20:25:05+08:00">2018-10-11</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-24 14:49:40" itemprop="dateModified" datetime="2018-10-24T14:49:40+08:00">2018-10-24</time>
+              
             
           </span>
 
@@ -372,7 +389,24 @@
       
 
       
-        
+        <p>研究了一段时间手机的惯性导航，跟大家分享一下学习的心得。</p>
+<p>先下个结论，<code>高精度的室内定位是无法单靠惯性导航（简称：惯导）来实现的</code>。为什么我会这么说呢，看完这篇文章你就明白了。</p>
+<p>先说下为什么要研究室内导航技术，一个非常简单的原因：室内GPS信号差。假如室内能清晰的收到GPS信号，这个问题就不会令那么多所谓的科学家、研究人员感到头疼了。</p>
+<p>进入正题，首先惯性导航主要依赖于两个传感器，和通过传感器计算出三个参数：</p>
+<p><code>加速度传感器：行走步数N，行走步长L</code></p>
+<p><code>磁场传感器：方向A</code></p>
+<p>假定此时的位置为P(x0,y0)，当我们向前迈出一步后，相信大家都很容易推出下个位置P(x1,y1):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x1=x0+L*cos(A);</span><br><span class="line">y1=y0+L*sin(A);</span><br></pre></td></tr></table></figure>
+<p>我们通过这个简单的公式就可以不断的推导人的行进位置。</p>
+<p>当然，理想是很美好的，实际上我们在导航的过程会遇到第一个问题就是<code>传感器的误差</code>。<br>误差是无法避免的，我们的传感器可以做到高精度，但是再高的精度也无法避免产生误差，算法在一定程度上可以弥补这些差距，但算法并不是万能的。千里之堤溃于蚁穴，误差积累到一定程度就会产生极大的影响。</p>
+<p>传感器的自身误差是一方面，另一方面就要考虑到<code>环境的影响</code>。举个例子来说就是强磁场干扰，我们手机的磁场传感器随时会受到各类电子仪器，巨型铁块（例如：电梯）的干扰，在这种情况下，方向A将变得及其不稳定。还有人在行走过程中手臂的摆动会对加速度产生影响，这可不是简单滤波就可以消除的。</p>
+<p>还有一个难点在于<code>步长L的推算</code>，人是非常有个性的生物，多么有个性呢？不同的人，不同的环境，不同的着装，走出来的步伐都不尽相同，说白了就是没有一个很好的推算公式来模拟人的步长，当然这也就造成了误差。</p>
+<p>然而我们会看到一些论文，会说他们设计的惯性系统的精度在1%以下，实际上仔细看的话，他们的实验场景往往局限在极小的范围内，时间跨度也很短暂。想象一下你出门陪女朋友逛街，可能在某个大型商场中一逛就是好几个小时，这时候惯导早就偏到天边去了，这也就是现在的商业场景中，没有哪个纯惯导系统能获得成功的原因（事实上，没有也没有其他算法能做到高精度，低成本的室内定位，不然早推广到全球了）。</p>
+<p>假设传感器没有一丝误差，环境也对传感器也不产生一丝影响，这时候误差依旧存在。因为人就是一个误差生成器，我们在行进的过程中，手机或者在口袋中跳跃，又或者握在手中随身体摆动，我们没法做到每个动作都像机器人一样准确，动作中大量多余的信息同样会误导算法的计算。</p>
+<p>由此可见，惯性导航是一个误差不断累计的系统，而且系统自身还不具备自我纠正的能力。所以你就应该明白开头为什么我会说纯惯导不适合导航了。</p>
+<p>光顾着讲惯性导航的劣势了那么来说说它的优点，由于惯导计算十分简单，同时不需要外部器械辅助，使得惯导成为了室内定位的一个非常好的辅助系统，在惯导的基础之上，我们引入WI-FI，蓝牙或者其他辅助手段来不断纠正惯导的误差，使得每隔一段时间我们就能减小累计误差，在多次迭代的过程中达到一个平衡，最终使得定位更加精准。因此如果是作为辅助系统来说，惯导绝对是不二之选。</p>
+<p>最后总结一下：惯性导航由于误差累计而且缺乏自我纠偏的手段，无法独立作为导航手段，但是却可以作为室内定位最好的辅助手段，是一种非常棒的辅助定位技术。另外，通过各类算法辅助，在短距离内惯导还是能够达到相当不错的精准度的。</p>
+
       
     </div>
 
@@ -389,6 +423,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/室内定位/" rel="tag"># 室内定位</a>
+          
+        </div>
       
 
       
@@ -464,6 +504,19 @@
 
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
               
             </nav>
           
